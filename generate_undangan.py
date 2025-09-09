@@ -49,7 +49,7 @@ data = {
     "panggilan": "Okto & Anisa",
     "tanggal_resepsi": "Sabtu, 04 Oktober 2025",
     "lokasi": "Jl. Jagad Buana Gg. Pancasila No.35, Lampung Utara",
-    "maps": "https://maps.app.goo.gl/o3zDdygzkPqmhQVH9?g_st=aw",
+    "maps": "https://maps.app.goo.gl/wDivgd5js4zFs3gAA?g_st=aw",
     "musik": "kumbang hati.mp3",
     "foto_pria": "DSC03249.jpg",
     "foto_wanita": "DSC03246.jpg",
@@ -617,10 +617,8 @@ html_template = f"""
       left: 0; 
       width: 100%; 
       height: 100%;
-      background: rgba(0,0,0,0.9);
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
+      background: rgba(0,0,0,0.8);
+      align-items: center; justify-content: center;
       z-index: 1000;
       backdrop-filter: blur(5px);
     }}
@@ -1170,8 +1168,9 @@ html_template = f"""
   }}
 function openLightbox(src) {{
   document.getElementById("lightbox-img").src = src;
-  document.getElementById("lightbox").style.display = "flex";
+  document.getElementById("lightbox").classList.add("open");
 }}
+document.getElementById("lightbox").onclick = function(){ this.classList.remove("open"); };
 
   // Countdown (diselaraskan ke pukul 10:00 WIB)
   var acara = new Date("Oct 4, 2025 10:00:00").getTime();
