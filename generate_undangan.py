@@ -622,6 +622,7 @@ html_template = f"""
       z-index: 1000;
       backdrop-filter: blur(5px);
     }}
+    .lightbox.open { display: flex; }
     .lightbox img {{
       max-width: 90%; 
       max-height: 80%;
