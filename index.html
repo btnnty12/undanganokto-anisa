@@ -1334,12 +1334,13 @@ function openLightbox(src) {
   }
 
   const namaTamu = getNamaFromURL();
-  if (namaTamu) {
-    document.getElementById("nama-tamu").innerHTML =
-      "Kepada Yth.<br><strong>" + namaTamu + "</strong>";
+  const elemen = document.getElementById("nama-tamu);
+  if (elemen) {
+    if (namaTamu) {
+      elemen.innerHTML = "Kepada Yth.<br><strong>" + namaTamu + "</strong>";
     } else {
       elemen.innerHTML = "Kepada Yth.<br><strong>Tamu Undangan</strong>";
-  }
+  }}
 </script>
 
 </body>
