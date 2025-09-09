@@ -913,10 +913,10 @@
   <div class="cover-overlay"></div>
   <div class="cover-section-content">
     <div class="cover-text">
-      <div class="cover-nama" id="cover-nama">
+      <div class="cover-nama" id="cover-nama" style="display:none">
         <div class="kepada">Kepada Yth;</div>
         <div class="bapak-ibu">Bapak/Ibu/Saudara/i</div>
-        <div class="nama-tamu" id="nama-tamu">Kepada Yth.<br><strong>Tamu Undangan</strong></div>
+        <div class="nama-tamu" id="nama-tamu">Nama Tamu</div>
       </div>
       <h1 class="cover-title">Okto & Anisa</h1>
       <p class="cover-date">Sabtu, 04 Oktober 2025</p>
@@ -1204,18 +1204,20 @@ function openLightbox(src) {
     window.open(waUrl, '_blank');
   }
 
-  {getNamaFromURL()}
-  {getNamaDisplay()}
+  // Nama tamu dari URL (?to= atau ?nama=)
+  (function() {
+    var params = new URLSearchParams(window.location.search || '');
+    var namaTamu = params.get('to') || params.get('nama') || '';
+    var namaEl = document.getElementById('nama-tamu');
+    var coverNamaWrap = document.getElementById('cover-nama');
 
-  // Tampilkan nama di cover
-  function tampilkanNama() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const nama = urlParams.get('nama');
-    const namaElement = document.getElementById('nama-tamu');
-    if (nama && namaElement) {
-      namaElement.textContent = nama;
+    if (namaTamu && namaEl) {
+      // isikan nama ke elemen
+      namaEl.textContent = namaTamu;
+      // pastikan wrapper terlihat
+      if (coverNamaWrap) coverNamaWrap.style.display = 'block';
     }
-  }
+  })();
 
   // Tambah komentar ke web
   function tambahKomentar() {
@@ -1332,7 +1334,7 @@ function openLightbox(src) {
   function getNamaFromURL() {
     const params = new URLSearchParams(window.location.search);
     return params.get("to");
-  }
+  }}
 
   const namaTamu = getNamaFromURL();
   const elemen = document.getElementById("nama-tamu");
