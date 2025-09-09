@@ -1328,13 +1328,14 @@ function openLightbox(src) {
   });
 
   // ambil nama tamu dari URL
+  window.onload = function () {
   function getNamaFromURL() {
     const params = new URLSearchParams(window.location.search);
     return params.get("to");
   }
 
   const namaTamu = getNamaFromURL();
-  const elemen = document.getElementById("nama-tamu);
+  const elemen = document.getElementById("nama-tamu");
   if (elemen) {
     if (namaTamu) {
       elemen.innerHTML = "Kepada Yth.<br><strong>" + namaTamu + "</strong>";
