@@ -1211,6 +1211,8 @@ html_template = f"""
     sections.forEach(section => {{
       section.classList.add('visible');
     }});
+    // Panggil tampilkanNama setelah buka undangan
+    tampilkanNama();
   }}
 function openLightbox(src) {{
   document.getElementById("lightbox-img").src = src;
@@ -1277,9 +1279,6 @@ document.getElementById("lightbox").onclick = function() {{
     var waUrl = `https://wa.me/6281271854664?text=${{encodeURIComponent(pesan)}}`;
     window.open(waUrl, '_blank');
   }}
-
-  {{getNamaFromURL()}}
-  {{getNamaDisplay()}}
 
   // Tampilkan nama di cover
   function tampilkanNama() {{
@@ -1404,14 +1403,27 @@ document.getElementById("lightbox").onclick = function() {{
   // ambil nama tamu dari URL
   function getNamaFromURL() {{
     const params = new URLSearchParams(window.location.search);
-    return params.get("to");
+    return params.get("to") || params.get("nama");
   }}
 
-  const namaTamu = getNamaFromURL();
-  if (namaTamu) {{
-    document.getElementById("nama-tamu").innerHTML =
-      "Kepada Yth.<br><strong>" + namaTamu + "</strong>";
+  function tampilkanNama() {{
+    const namaTamu = getNamaFromURL();
+    if (namaTamu) {{
+      document.getElementById("nama-tamu").innerHTML = namaTamu;
+    }}
   }}
+
+  // Panggil fungsi saat load
+  window.addEventListener('load', function() {{
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {{
+      section.classList.add('visible');
+    }});
+    tampilkanKomentar();
+    tampilkanNama(); // Panggil fungsi tampilkanNama
+    tampilkanRSVP();
+    optimizeImages();
+  }});
 
   // Optimasi gambar
   function optimizeImages() {{
