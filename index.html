@@ -179,9 +179,9 @@
       border-radius: 20px;
       max-width: 900px;
       text-align: center;
-      transform: translateY(30px);
-      opacity: 0;
-      transition: all 1s ease-in-out;
+      transform: translateY(0);
+      opacity: 1;
+      transition: all 0.5s ease-in-out;
     }
     section.visible {
       transform: translateY(0);
@@ -757,7 +757,7 @@
       animation: fadeInUp 2s ease;
     }
     .doa-content .section-title {
-      font-size: 3.5rem;
+      font-size: 2.5rem;
       margin-bottom: 40px;
       text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
       position: relative;
@@ -768,7 +768,7 @@
       bottom: -15px;
       left: 50%;
       transform: translateX(-50%);
-      width: 120px;
+      width: 100px;
       height: 4px;
       background: linear-gradient(90deg, #d4af37, #fff, #d4af37);
       border-radius: 2px;
@@ -1203,14 +1203,15 @@ document.getElementById("lightbox").onclick = function() {
     }
   }, 1000);
 
-  // Scroll Animation
-  window.addEventListener("scroll", function() {
-    document.querySelectorAll("section").forEach(function(sec) {
-      var pos = sec.getBoundingClientRect().top;
-      if(pos < window.innerHeight - 100) {
-        sec.classList.add("visible");
-      }
+  // Tampilkan semua section langsung
+  window.addEventListener('load', function() {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+      section.classList.add('visible');
     });
+    tampilkanKomentar();
+    tampilkanNama();
+    tampilkanRSVP();
   });
 
   // Music Control
