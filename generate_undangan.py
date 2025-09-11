@@ -161,6 +161,8 @@ html_template = f"""
       top: 0;
       left: 0;
       z-index: 0;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
     }}
     .cover-top {{
       flex: 0 0 auto;
@@ -1043,9 +1045,8 @@ html_template = f"""
       <h2 class="section-title">🌸 Allah berfirman</h2>
       <div class="quote-text">
       وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ. 
-
       <br>Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan untukmu pasangan hidupmu
-        supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.</br>
+        supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.
       </div>
       <div class="verse-ref">(QS. Ar-Rum: 21)</div>
     </div>
@@ -1205,6 +1206,11 @@ html_template = f"""
     document.getElementById("cover-section").style.display = "none";
     document.getElementById("content").style.display = "block";
     document.getElementById("musik").play();
+    // Tampilkan semua section langsung
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {{
+      section.classList.add('visible');
+    }});
   }}
 function openLightbox(src) {{
   document.getElementById("lightbox-img").src = src;
@@ -1214,29 +1220,22 @@ document.getElementById("lightbox").onclick = function() {{
   this.classList.remove("open"); 
 }};
 
-  // Countdown (diselaraskan ke pukul 10:00 WIB)
-  var acara = new Date("Oct 4, 2025 10:00:00").getTime();
-  var x = setInterval(function() {{
-    var now = new Date().getTime();
-    var distance = acara - now;
+  // Hilangkan countdown dan scroll animation
+  // var countdown = setInterval(function() {{
+  //   var now = new Date().getTime();
+  //   var distance = targetDate - now;
+  //   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  //   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  //   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  //   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  //   document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+  //   if (distance < 0) {{
+  //     clearInterval(countdown);
+  //     document.getElementById("countdown").innerHTML = "Acara telah dimulai!";
+  //   }}
+  // }}, 1000);
 
-    var days = Math.floor(distance / (1000*60*60*24));
-    var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-    var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-    var seconds = Math.floor((distance % (1000*60)) / 1000);
-
-    var el = document.getElementById("countdown");
-    if (!el) return;
-
-    if (distance >= 0) {{
-      el.innerHTML = days + " Hari " + hours + " Jam " + minutes + " Menit " + seconds + " Detik ";
-    }} else {{
-      clearInterval(x);
-      el.innerHTML = "Acara Sedang Berlangsung 🎉";
-    }}
-  }}, 1000);
-
-  // Tampilkan semua section langsung
+  // Tampilkan semua section langsung saat load
   window.addEventListener('load', function() {{
     const sections = document.querySelectorAll('section');
     sections.forEach(section => {{
@@ -1413,6 +1412,22 @@ document.getElementById("lightbox").onclick = function() {{
     document.getElementById("nama-tamu").innerHTML =
       "Kepada Yth.<br><strong>" + namaTamu + "</strong>";
   }}
+
+  // Optimasi gambar
+  function optimizeImages() {{
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {{
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      if (img.src.includes('DSC03210.jpg') || img.src.includes('DSC03246.jpg') || img.src.includes('DSC03249.jpg')) {{
+        img.style.imageRendering = 'crisp-edges';
+        img.style.imageRendering = '-webkit-optimize-contrast';
+      }}
+    }});
+  }}
+
+  // Panggil optimasi saat load
+  window.addEventListener('load', optimizeImages);
 </script>
 
 </body>
