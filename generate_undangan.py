@@ -121,6 +121,43 @@ html_template = f"""
       color: #fff;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }}
+    /* Pembuka Section */
+    .pembuka-section {{
+      background: linear-gradient(135deg, #ffffff, #f8f9fa);
+      color: #333;
+      position: relative;
+      overflow: hidden;
+    }}
+    .pembuka-section::before {{
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('tapis.jpg') center/cover no-repeat;
+      opacity: 0.05;
+      z-index: 0;
+    }}
+    .pembuka-content {{
+      position: relative;
+      z-index: 1;
+      background: rgba(255,255,255,0.85);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      max-width: 900px;
+      margin: 0 auto;
+      backdrop-filter: blur(6px);
+    }}
+    .pembuka-salam {{
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: #8b0000;
+      margin-bottom: 16px;
+    }}
+    .pembuka-text {{
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.9;
+    }}
     .cover-section {{
       height: 100vh;
       display: flex; 
@@ -882,6 +919,18 @@ html_template = f"""
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
       letter-spacing: 1px;
     }}
+    .quote-text .arabic {{
+      font-size: 24px;
+      line-height: 2;
+      font-style: normal;
+      margin-bottom: 16px;
+    }}
+    .quote-text .latin {{
+      font-size: 16px;
+      line-height: 1.8;
+      font-style: italic;
+      opacity: 0.95;
+    }}
     .quote-text::before {{
       content: '"';
       font-size: 80px;
@@ -1040,13 +1089,24 @@ html_template = f"""
 <!-- CONTENT -->
 <div id="content" style="display:none;">
 
+  <section id="pembuka" class="pembuka-section">
+    <div class="pembuka-content">
+      <h2 class="section-title">💐 Kalimat Pembuka</h2>
+      <div class="pembuka-salam">Assalamu'alaikum Warahmatullahi Wabarakatuh</div>
+      <div class="pembuka-text">
+        Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i
+        untuk hadir dan memberikan doa restu pada acara resepsi pernikahan kami.
+        Kehadiran dan doa restu Bapak/Ibu/Saudara/i merupakan kebahagiaan bagi kami.
+      </div>
+    </div>
+  </section>
+
   <section id="doa" class="doa-section">
     <div class="doa-content">
       <h2 class="section-title">🌸 Allah berfirman</h2>
       <div class="quote-text">
-      وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ. 
-      <br>Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan untukmu pasangan hidupmu
-        supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.
+        <div class="arabic">وَمِنْ اٰيٰتِهٖٓ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوْٓا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً ۗ إِنَّ فِيْ ذٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُوْنَ</div>
+        <div class="latin">Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan untukmu pasangan hidupmu supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.</div>
       </div>
       <div class="verse-ref">(QS. Ar-Rum: 21)</div>
     </div>
