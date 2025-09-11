@@ -1003,8 +1003,8 @@ html_template = f"""
       <div class="quote-text">
       وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ. 
 
-        Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan untukmu pasangan hidupmu
-        supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.
+      <br>Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan untukmu pasangan hidupmu
+        supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.</br>
       </div>
       <div class="verse-ref">(QS. Ar-Rum: 21)</div>
     </div>
@@ -1170,7 +1170,6 @@ function openLightbox(src) {{
   document.getElementById("lightbox-img").src = src;
   document.getElementById("lightbox").classList.add("open");
 }}
-document.getElementById("lightbox").onclick = function(){ this.classList.remove("open"); };
 
   // Countdown (diselaraskan ke pukul 10:00 WIB)
   var acara = new Date("Oct 4, 2025 10:00:00").getTime();
