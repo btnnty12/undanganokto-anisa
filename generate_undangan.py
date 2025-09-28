@@ -51,8 +51,8 @@ data = {
     "lokasi": "Jl. Jagad Buana Gg. Pancasila No.35, Lampung Utara",
     "maps": "https://maps.app.goo.gl/wDivgd5js4zFs3gAA?g_st=aw",
     "musik": "kumbang hati.mp3",
-    "foto_pria": "DSC03249.jpg",
-    "foto_wanita": "DSC03246.jpg",
+    "foto_pria": "compressed/DSC03249.jpg",
+    "foto_wanita": "compressed/DSC03246.jpg",
     "rekening": [
         "BRI - 565501021252537 a.n ANISA AGUSTINA",
         "BNI - 0461191523 a.n OKTORULLAH"
@@ -61,9 +61,9 @@ data = {
 }
 
 galeri = [
-    "foto1.jpg", "foto2.jpg", "foto3.jpg",
-    "foto4.jpg", "foto5.jpg", "foto6.jpg",
-    "foto7.jpg", "foto8.jpg", "foto9.jpg"
+    "compressed/foto1.jpg", "compressed/foto2.jpg", "compressed/foto3.jpg",
+    "compressed/foto4.jpg", "compressed/foto5.jpg", "compressed/foto6.jpg",
+    "compressed/foto7.jpg", "compressed/foto8.jpg", "compressed/foto9.jpg"
   ]
 
 galeri_html = "".join([f"<div class='slide'><img src='{img}' alt='Galeri'></div>" for img in galeri])
@@ -77,13 +77,16 @@ html_template = f"""
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Undangan {data['panggilan']}</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <!-- Preload gambar penting -->
+  <link rel="preload" as="image" href="compressed/DSC03210.jpg">
+  <link rel="preload" as="image" href="compressed/tapis.jpg">
   <style>
     * {{
       margin: 0; padding: 0; box-sizing: border-box;
     }}
     body {{
       font-family: 'Poppins', sans-serif;
-      background: url('tapis.jpg') fixed center center;
+      background: url('compressed/tapis.jpg') fixed center center;
       background-size: cover;
       color: #333;
       overflow-x: hidden;
@@ -132,7 +135,7 @@ html_template = f"""
       content: '';
       position: absolute;
       inset: 0;
-      background: url('tapis.jpg') center/cover no-repeat;
+      background: url('compressed/tapis.jpg') center/cover no-repeat;
       opacity: 0.05;
       z-index: 0;
     }}
@@ -633,7 +636,7 @@ html_template = f"""
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('tapis.jpg') center/cover no-repeat;
+      background: url('compressed/tapis.jpg') center/cover no-repeat;
       opacity: 0.03;
       z-index: 0;
     }}
@@ -896,7 +899,7 @@ html_template = f"""
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('tapis.jpg') center/cover no-repeat;
+      background: url('compressed/tapis.jpg') center/cover no-repeat;
       opacity: 0.1;
       z-index: 0;
     }}
@@ -1066,7 +1069,7 @@ html_template = f"""
 
 <!-- COVER -->
 <section id="cover-section" class="cover-section">
-  <img src="DSC03210.jpg" alt="Foto Pengantin" class="cover-photo">
+  <img src="compressed/DSC03210.jpg" alt="Foto Pengantin" class="cover-photo" loading="eager" fetchpriority="high">
   <div class="cover-overlay"></div>
   <div class="cover-section-content">
     <div class="cover-top">
@@ -1116,7 +1119,7 @@ html_template = f"""
     <h2 class="section-title">🤵 & 👰 Mempelai</h2>
     <div class="couple" style="margin-top:30px;">
       <div>
-        <img src="{data['foto_pria']}" alt="Okto">
+        <img src="{data['foto_pria']}" alt="Okto" loading="eager">
         <p><b>{data['nama_pria']}</b></p>
         <p style="font-size:14px; color:#666; margin-top:10px;">
           Putra pertama dari 3 bersaudara<br>
@@ -1125,7 +1128,7 @@ html_template = f"""
         </p>
       </div>
       <div>
-        <img src="{data['foto_wanita']}" alt="Anisa">
+        <img src="{data['foto_wanita']}" alt="Anisa" loading="eager">
         <p><b>{data['nama_wanita']}</b></p>
         <p style="font-size:14px; color:#666; margin-top:10px;">
           Putri ke-5 (Bungsu) dari lima bersaudara<br>
@@ -1158,7 +1161,7 @@ html_template = f"""
   <section id="galeri">
     <h2 class="section-title">📸 Galeri</h2>
     <div class="gallery-grid">
-      {''.join([f"<img src='{img}' alt='Galeri' onclick='openLightbox(this.src)'>" for img in galeri])}
+      {''.join([f"<img src='{img}' alt='Galeri' onclick='openLightbox(this.src)' loading='lazy'>" for img in galeri])}
     </div>
   </section>
 
@@ -1166,7 +1169,7 @@ html_template = f"""
     <h2 class="section-title">👨‍👩‍👧‍👦 Keluarga Besar</h2>
     <div class="keluarga-wrap">
       <div class="keluarga-frame">
-        <img src="ortu.jpeg" alt="Keluarga Besar" class="keluarga-foto" />
+        <img src="compressed/ortu.jpeg" alt="Keluarga Besar" class="keluarga-foto" loading="lazy" />
       </div>
       <div class="keluarga-nama">
         Hi. Kausar, S.Pd.,M.M Gelar Raja Bangsawan<br>
