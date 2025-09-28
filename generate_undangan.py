@@ -24,7 +24,7 @@ acara_list = [
         "hari": "Sabtu, 04 Oktober 2025",
         "pukul": "10.00 WIB s/d selesai",
         "tempat": "Jl. Jagad Buana Gg. Pancasila No.35, RT 03 RK 04 Desa Negara Tulang Bawang, Kec. Bunga Mayang, Kab. Lampung Utara",
-        "maps": "https://maps.app.goo.gl/o3zDdygzkPqmhQVH9?g_st=aw",
+        "maps": "https://maps.app.goo.gl/b7zEtA6od3nY8dr47?g_st=aw",
         "highlight": True
     }
 ]
