@@ -1282,20 +1282,20 @@ document.getElementById("lightbox").onclick = function() {{
   this.classList.remove("open"); 
 }};
 
-  // Hilangkan countdown dan scroll animation
-  // var countdown = setInterval(function() {{
-  //   var now = new Date().getTime();
-  //   var distance = targetDate - now;
-  //   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  //   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  //   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  //   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  //   document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-  //   if (distance < 0) {{
-  //     clearInterval(countdown);
-  //     document.getElementById("countdown").innerHTML = "Acara telah dimulai!";
-  //   }}
-  // }}, 1000);
+  Hilangkan countdown dan scroll animation
+   var countdown = setInterval(function() {{
+     var now = new Date().getTime();
+     var distance = targetDate - now;
+     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+     document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+     if (distance < 0) {{
+       clearInterval(countdown);
+       document.getElementById("countdown").innerHTML = "Acara telah dimulai!";
+     }}
+  }}, 1000);
 
   // Tampilkan semua section langsung saat load
   window.addEventListener('load', function() {{
