@@ -1249,8 +1249,9 @@ document.getElementById("lightbox").onclick = function() {
   this.classList.remove("open"); 
 };
 
-  Hilangkan countdown dan scroll animation
-   var countdown = setInterval(function() {
+  // Countdown untuk acara resepsi
+  var targetDate = new Date("October 4, 2025 10:00:00").getTime();
+  var countdown = setInterval(function() {
      var now = new Date().getTime();
      var distance = targetDate - now;
      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -1273,6 +1274,7 @@ document.getElementById("lightbox").onclick = function() {
     tampilkanKomentar();
     tampilkanNama();
     tampilkanRSVP();
+    optimizeImages();
   });
 
   // Music Control
@@ -1310,7 +1312,7 @@ document.getElementById("lightbox").onclick = function() {
   // Tampilkan nama di cover
   function tampilkanNama() {
     const urlParams = new URLSearchParams(window.location.search);
-    const nama = urlParams.get('nama');
+    const nama = urlParams.get('nama') || urlParams.get('to');
     const namaElement = document.getElementById('nama-tamu');
     if (nama && namaElement) {
       namaElement.textContent = nama;
@@ -1420,38 +1422,6 @@ document.getElementById("lightbox").onclick = function() {
     komentarContainer.innerHTML = html;
   }
 
-  // Load komentar saat halaman dimuat
-  window.addEventListener('load', function() {
-    tampilkanKomentar();
-    tampilkanNama();
-    tampilkanRSVP();
-  });
-
-  // ambil nama tamu dari URL
-  function getNamaFromURL() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("to") || params.get("nama");
-  }
-
-  function tampilkanNama() {
-    const namaTamu = getNamaFromURL();
-    if (namaTamu) {
-      document.getElementById("nama-tamu").innerHTML = namaTamu;
-    }
-  }
-
-  // Panggil fungsi saat load
-  window.addEventListener('load', function() {
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-      section.classList.add('visible');
-    });
-    tampilkanKomentar();
-    tampilkanNama(); // Panggil fungsi tampilkanNama
-    tampilkanRSVP();
-    optimizeImages();
-  });
-
   // Optimasi gambar
   function optimizeImages() {
     const images = document.querySelectorAll('img');
@@ -1465,8 +1435,6 @@ document.getElementById("lightbox").onclick = function() {
     });
   }
 
-  // Panggil optimasi saat load
-  window.addEventListener('load', optimizeImages);
 </script>
 
 </body>
